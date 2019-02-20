@@ -1,0 +1,6 @@
+
+CREATE OR REPLACE PROCEDURE pr1(id IN NUMBER, v_sal OUT NUMBER)
+IS
+BEGIN
+select emp_sal into v_sal from emp1 where emp_id=id;
+end;
