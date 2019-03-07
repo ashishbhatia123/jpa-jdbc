@@ -57,10 +57,10 @@ public static void main(String[] args) {
 	}
 	case 3:
 	{//--- deletebyWhereClause---
-		ArrayList<Author> listDelObj=serviceObj.deleteByWhereClause();
-		for(Author au:listDelObj)
+		int delObj=serviceObj.deleteByWhereClause();
+		if(delObj!=0)
 		{
-		System.out.println(au);
+			System.out.println("Deleted rows are "+ delObj);
 		}
 		
 	break;
@@ -73,6 +73,8 @@ public static void main(String[] args) {
 	}
 	case 5:
 	{
+		//---- udate by where clause
+		serviceObj.updateByWhereClause();
 	break;
 	}
 	case 6:

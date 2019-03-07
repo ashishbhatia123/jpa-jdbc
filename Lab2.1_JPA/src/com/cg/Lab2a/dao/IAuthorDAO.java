@@ -10,7 +10,7 @@ public interface IAuthorDAO {
 	
 		public abstract Author insert(Author authorObj);
 		public abstract Author deleteById(int authorId);
-		public abstract ArrayList<Author> deleteByWhereClause();
+		public abstract int deleteByWhereClause();
 		public abstract Author updateById(int authorId);
 		public abstract Author updateByWhereClause();
 		public abstract Author find(int author_id);

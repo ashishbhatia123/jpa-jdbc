@@ -25,9 +25,9 @@ IAuthorDAO daoObj= new AuthorDAOImpl();
 	}
 
 	@Override
-	public ArrayList<Author> deleteByWhereClause() {
-		// TODO Auto-generated method stub
-		return null;
+	public int deleteByWhereClause() {
+		
+		return daoObj.deleteByWhereClause();
 	}
 
 	@Override
@@ -39,7 +39,7 @@ IAuthorDAO daoObj= new AuthorDAOImpl();
 	@Override
 	public Author updateByWhereClause() {
 		// TODO Auto-generated method stub
-		return null;
+		return daoObj.updateByWhereClause();
 	}
 
 	@Override

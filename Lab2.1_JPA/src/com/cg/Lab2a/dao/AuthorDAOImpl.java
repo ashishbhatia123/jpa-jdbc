@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import com.cg.Lab2a.beans.Author;
@@ -39,21 +40,34 @@ public class AuthorDAOImpl implements IAuthorDAO{
 	}
 
 	@Override
-	public ArrayList<Author> deleteByWhereClause() {
-		// TODO Auto-generated method stub
-		return null;
+	public int deleteByWhereClause() {
+		em.flush();
+		em.clear();
+		Query query = em.createNativeQuery("DELETE  FROM Author AS a WHERE a.authorId = :no ");
+		
+		query.setParameter("no", 5);
+		int deletedRowNumber = query.executeUpdate();
+		
+		
+		return deletedRowNumber;
 	}
 
 	@Override
 	public Author updateById(int authorId) {
 		Author a1 =em.find(Author.class, authorId);
-		a1.setName(new Name().setFirstName("ashish"));
+		a1.getName().setFirstName("ashish");
 		return null;
 	}
 
 	@Override
 	public Author updateByWhereClause() {
-		// TODO Auto-generated method stub
+		
+		
+		Query query =em.createQuery("update Author a SET a.phoneNo=:pNo where a.authorId=:no");
+		query.setParameter("pNo", "1234567");
+		query.setParameter("no", 5);
+		int rowUpdatedNo= query.executeUpdate();
+		System.out.println("updated");
 		return null;
 	}
 
