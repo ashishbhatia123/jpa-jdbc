@@ -13,6 +13,6 @@ public interface IAuthorDAO {
 		public abstract int deleteByWhereClause();
 		public abstract Author updateById(int authorId);
 		public abstract Author updateByWhereClause();
-		public abstract Author find(int author_id);
+		public abstract ArrayList<Author> find(int author_id);
 		public abstract List<Author> fetchAll();
 	}

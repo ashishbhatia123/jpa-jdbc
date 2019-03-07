@@ -10,12 +10,16 @@ import com.cg.Lab2a.service.IAuthorService;
 public class Main {
 public static void main(String[] args) {
 	IAuthorService serviceObj =new AuthorServiceImpl();
-	System.out.println("1.Insert into table\n 2.deleteById\n3.DeleteByWhereClause \n4. updateById\n"
-			+ " 5.UpdatedByWhereClause \n 6.  fetch all details\n 7. find by id\n 8. exit");
+	
 	Scanner scanner = new Scanner(System.in);
 	
-	System.out.println("Enter choice");
-	int choice = scanner.nextInt();
+	
+	while(true)
+	{
+		System.out.println("1.Insert into table\n 2.deleteById\n3.DeleteByWhereClause \n4. updateById\n"
+				+ " 5.UpdatedByWhereClause \n 6.  fetch all details\n 7. find by id\n 8. exit");
+		System.out.println("Enter choice");
+		int choice = scanner.nextInt();
 	switch(choice)
 	{
 	case 1:
@@ -37,7 +41,7 @@ public static void main(String[] args) {
 	System.out.println("Enter phoneNo ");
 	String phoneNo = scanner.nextLine();
 		Author authorObj= serviceObj.insert(auth_Id,fname,mname,lname,phoneNo);
-		System.out.println(authorObj);
+		System.out.println(authorObj);			
 		System.out.println("data inserted");
 	break;
 	}
@@ -88,15 +92,26 @@ public static void main(String[] args) {
 	}
 	case 7:
 	{
+		//----findById---
+		ArrayList<Author> list=serviceObj.find(2);
+		System.out.println("no of rows are :"+list.size());
+		for(Author auth:list)
+		{
+			System.out.println(list);
+		}
+		
+		
+		
 	break;
 	}
 	case 8:
 	{
+		System.exit(0);
 	break;
 	}
 	}
 	
-	
+}
 	
 }
 	

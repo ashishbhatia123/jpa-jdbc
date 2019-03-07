@@ -40,14 +40,15 @@ public class AuthorDAOImpl implements IAuthorDAO{
 	}
 
 	@Override
-	public int deleteByWhereClause() {
-		em.flush();
-		em.clear();
-		Query query = em.createNativeQuery("DELETE  FROM Author AS a WHERE a.authorId = :no ");
-		
-		query.setParameter("no", 5);
+	public int deleteByWhereClause() {	
+		Query query  =  em.createQuery("DELETE FROM Author a WHERE a.authorId = :no");
+		// create query is applied on entity ie class parameter  
+		//Query query = em.createNativeQuery("DELETE FROM author_master a WHERE a.auth_id = :no ");
+		// createNative Query is applied on sql table		
+		query.setParameter("no", 1);
+		entityTran.begin();
 		int deletedRowNumber = query.executeUpdate();
-		
+		entityTran.commit();
 		
 		return deletedRowNumber;
 	}
@@ -63,18 +64,29 @@ public class AuthorDAOImpl implements IAuthorDAO{
 	public Author updateByWhereClause() {
 		
 		
-		Query query =em.createQuery("update Author a SET a.phoneNo=:pNo where a.authorId=:no");
+		Query query =em.createNativeQuery("UPDATE author_master a SET a.phone_no=:pNo WHERE a.auth_id=:no");
 		query.setParameter("pNo", "1234567");
-		query.setParameter("no", 5);
+		query.setParameter("no", 1);
+		entityTran.begin();
 		int rowUpdatedNo= query.executeUpdate();
+		entityTran.commit();
 		System.out.println("updated");
 		return null;
 	}
 
+
+	@SuppressWarnings("unchecked")
 	@Override
-	public Author find(int author_id) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Author> find(int author_id) {
+		Query query = em.createQuery("SELECT a from Author AS a where a.authorId>:ID");
+		query.setParameter("ID", author_id);
+		entityTran.begin();
+		//int noOfRows=query.executeUpdate();
+		ArrayList<Author> list =(ArrayList<Author>) query.getResultList();
+		entityTran.commit();
+		
+		//System.out.println("no of rows are :"+ noOfRows);
+		return list;
 	}
 
 	@Override

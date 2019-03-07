@@ -2,11 +2,14 @@ package com.cg.Lab2a.service;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.cg.Lab2a.beans.Author;
 import com.cg.Lab2a.beans.Name;
 import com.cg.Lab2a.dao.AuthorDAOImpl;
 import com.cg.Lab2a.dao.IAuthorDAO;
+
+
 
 public class AuthorServiceImpl implements IAuthorService{
 Author authorObj ;
@@ -43,9 +46,9 @@ IAuthorDAO daoObj= new AuthorDAOImpl();
 	}
 
 	@Override
-	public Author find(int author_id) {
+	public ArrayList<Author> find(int author_id) {
 		// TODO Auto-generated method stub
-		return null;
+		return  daoObj.find(author_id);
 	}
 
 	@Override
