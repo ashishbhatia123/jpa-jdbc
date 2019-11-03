@@ -1,0 +1,12 @@
+# jpa-jdbc
+
+
+JdbcProject
+JpaProject
+JpaInheritanceProject
+JpaInheritanceProject2
+JpaInheritanceProject3
+jpaAssociationOneToOneProject
+jpaAssociationOneToManyProject
+jpaAssociationOneToManyProject2
+jpaAssociationManyToManyProject
